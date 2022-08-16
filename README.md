@@ -37,7 +37,7 @@ A Spring Boot application to perform following operation:
 
 > + ProductController -> getProductByCategory(@PathVariable String category)
 > + CategoryController -> getCategoryByName(@PathVariable String name)
-> + CustomerController -> order(@RequestBody Customer customer,@PathVariable int id,@PathVariable int productId)
+> + CustomerController -> order(@PathVariable("id") int id,@PathVariable("productId") int productId)
 > + MerchantController -> getMerchantById(@PathVariable int id)
 > ,etc
 

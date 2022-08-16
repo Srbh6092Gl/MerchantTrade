@@ -80,13 +80,15 @@ public class CustomerController {
 	public Customer updateCustomer(@RequestBody Customer customer) {
 		return custRepo.save(customer);
 	}
+	
 	//PUT request to update a Customer
 	//If any field is missing, it will take default value for the respective field
 	@PutMapping("/{id}/order/{productId}")
-	public Customer order(@RequestBody Customer customer,@PathVariable int id,@PathVariable int productId) throws Exception {
+	public Customer order(@PathVariable("id") int id,@PathVariable("productId") int productId) throws Exception {
 		Optional<Customer> c = custRepo.findById(id);
 		if(c.isEmpty())
 			throw new Exception("Customer does not exist");
+		Customer customer = c.get();
 		Optional<Product> product = prodRepo.findById(productId);
 		if(product.isEmpty())
 			throw new Exception("Product does not exist");
